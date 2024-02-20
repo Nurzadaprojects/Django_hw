@@ -29,11 +29,38 @@ def product_list_view(request):
     if request.method == 'GET':
         products = Product.objects.all()
 
+        for product in products:
+            for review in product.reviews.all():
+                print(review.title)
+        context = {'products': products}
+
+
 
         return render(
             request=request,
             template_name='products/product_list.html',
             context={'products': products}
-
             )
 
+
+def product_detail_view(request, pk):
+    if request.method == 'GET':
+        try:
+            products = Product.objects.get(id=pk)
+        except Product.DoesNotExist:
+            return render(
+                request=request,
+                template_name='errors/404.html'
+            )
+
+        context = {'product': products}
+
+        return render(
+            request=request,
+            template_name='products/product_detail.html',
+            context=context
+        )
+
+
+
+    

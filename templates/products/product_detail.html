@@ -1,0 +1,38 @@
+{% extends 'index.html' %}
+
+{% block content %}
+
+<body>
+    <h1>
+        Product Detail
+    </h1>
+
+<h1>
+    {{ product.title }} 
+</h1>
+<p>
+    {{ post.content }}
+</p>  
+<p>
+    {{ product_created_at }}
+</p>
+    
+
+<h1>
+    Reviews
+</h1>
+    
+{% for review in product.reviews.all %}
+    <p>
+        {{ review.title }}
+    </p>
+
+    <p>
+        {{ review.created_at }}
+    </p>
+
+{% endfor %}
+
+
+
+{% endblock %}

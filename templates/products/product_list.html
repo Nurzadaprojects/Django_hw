@@ -13,7 +13,10 @@
             <div class="card-body">
             <h5 class="card-title">{{ product.title }}</h5>
             <p class="card-text">{{ product.created_at }}</p>
-            <a href="#" class="btn btn-primary">View</a>
+            {% for review in product.reviews.all %}
+                <a href="#" class="btn btn-primary">{{ review.title }}</a>
+            {% endfor %}
+                <a href="/products/{{ product.id }}/" class="btn btn-primary">View</a>
             </div>
         </div>
     {% endfor %}
@@ -31,17 +34,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-        
 <body>
     <h1>
         Product list
