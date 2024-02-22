@@ -11,7 +11,7 @@ class Review(models.Model):
 
 
 class Product(models.Model):   
-    image = models.ImageField(upload_to='product_images', null=True)
+    image = models.ImageField(upload_to='product_images', null=True, blank=True)
     title = models.CharField(max_length=100)
     content = models.TextField(null=True, blank=True)
     rate = models.IntegerField(default=0)

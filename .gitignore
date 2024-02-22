@@ -1,7 +1,10 @@
 venv/
 .idea
+__pycache__/
 _pycache_/
 
 db.sqlite3
 .env
 .vscode/
+static_files/
+media/

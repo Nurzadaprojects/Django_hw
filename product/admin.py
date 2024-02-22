@@ -20,7 +20,7 @@ class ProductAdmin(admin.ModelAdmin):
     list_filter = ('created_at', 'rate')
     search_fields = ('title', )
     readonly_fields = ('created_at', 'updated_at', 'id')
-    fields = ('title', 'rate', )
+    fields = ('title', 'rate', 'image')
     inlines = [CategoryInline]
 
     # def get_readonly_fields(self, request, obj=None):
