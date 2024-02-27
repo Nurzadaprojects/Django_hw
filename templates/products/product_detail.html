@@ -33,6 +33,13 @@
 
 {% endfor %}
 
+<form action="/products/{{ pk }}/create_view/" method="product">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Create Review</button>
+</form>
+ 
+
 
 
 {% endblock %}

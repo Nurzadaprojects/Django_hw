@@ -1,10 +1,11 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from datetime import datetime
 from django.http import JsonResponse
 
 
 from product.models import Product
+from product.forms import ProductForm2, ReviewForm
 
 
 
@@ -52,7 +53,7 @@ def product_detail_view(request, pk):
                 request=request,
                 template_name='errors/404.html'
             )
-
+        form = ReviewForm()
         context = {'product': products}
 
         return render(
@@ -60,6 +61,49 @@ def product_detail_view(request, pk):
             template_name='products/product_detail.html',
             context=context
         )
+
+def create_review_view(request, pk):
+    if request.method == 'POST':
+        form = ReviewForm(request.POST)
+        if not form.is_valid():
+            return rebder(
+                request=request,
+                template_name='products/product_detail.html',
+                context={'form': form}
+            )
+
+        review = form.save(commit=False)
+        review.pk = pk
+        review.save()
+
+        return redirect(f'/products/{pk}/')
+
+
+
+def create_product_view(request):
+    if request.method == 'GET':
+        form = ProductForm2()
+
+        return render(
+            request=request,
+            template_name='products/create_product.html',
+            context={"form": form}
+
+        )
+    elif request.method == 'POST':
+        form = ProductForm2(request.POST, request.FILES)
+        if not form.is_valid():
+            return render(
+                request=request,
+                template_name='products/create_product.html',
+                context={"form": form}
+            )
+
+
+        # Product.objects.create(**form.cleaned_data)
+        form.save()
+        return redirect('/products/')
+
 
 
 
