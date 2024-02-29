@@ -1,4 +1,4 @@
-{% extends 'index.html' %}
+{% extends 'components/index.html' %}
 
 {% block content %}
 
@@ -11,7 +11,7 @@
     {{ product.title }} 
 </h1>
 <p>
-    {{ post.content }}
+    {{ product.content }}
 </p>  
 <p>
     {{ product_created_at }}
@@ -33,7 +33,7 @@
 
 {% endfor %}
 
-<form action="/products/{{ pk }}/create_view/" method="product">
+<form action="/products/{{ pk }}/create_view/" method="products">
     {% csrf_token %}
     {{ form.as_p }}
     <button type="submit">Create Review</button>

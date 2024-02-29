@@ -24,7 +24,8 @@ def bye_view(requests):
 
 def main_view(request):
     if request.method == 'GET':
-        return render(request, 'index.html')
+        print(request.user)
+        return render(request, 'components/index.html')
 
 def product_list_view(request):
     if request.method == 'GET':

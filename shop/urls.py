@@ -23,15 +23,25 @@ from django.conf.urls.static import static
 from product.views import test_view, date_view, bye_view, main_view, product_list_view, \
     product_detail_view, create_product_view, create_review_view
 
+from user.views import register_view, login_view, profile_view, logout_view, confirm_view
+
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('test/', test_view),
     path('date/', date_view),
     path('bye/', bye_view),
-    path('', main_view),
+    path('', main_view, name='main_view'),
     path('products/', product_list_view),
     path('products/<int:pk>/', product_detail_view),
     path('products/create/', create_product_view),
     path('products/<int:pk>/create_review/', create_review_view),
+
+    path('register/', register_view, name='register_view'),
+    path('login/', login_view, name='login_view'),
+    path('profile/', profile_view, name='profile_view'),
+    path('logout/', logout_view, name='logout_view'),
+    path('confirm/', confirm_view, name='confirm_view'),
+
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
