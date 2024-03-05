@@ -2,9 +2,11 @@ venv/
 .idea
 __pycache__/
 _pycache_/
-
+.DS_Store
 db.sqlite3
-.env
+README.md
 .vscode/
 static_files/
 media/
+.env
+settings.py

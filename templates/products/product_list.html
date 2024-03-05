@@ -10,6 +10,10 @@
     
     
 <body>
+    <form action="" method="get">
+        <input type="text" name="search" placeholder="Search" >
+        <input type="submit" value="Search">
+    </form>
     <h1>
         Welcome to 37-1 Nurzada's page
     </h1>
@@ -32,6 +36,15 @@
             </div>
         </div>
     {% endfor %}
+    
+<h1>
+    Pages 
+</h1>
+    {% for page in pages %}
+        <a href="?page={{ page }}" class="btn btn-secondary">{{ page }}</a>
+    {% endfor %}
+
+
 </body>
 </html>
 
